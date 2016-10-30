@@ -1,0 +1,9 @@
+<p>welcome back: {{request.user}}</p>
+{%for match_user, percent in matches %}
+
+
+<a href="{{ match_user.profile.get_absolute_url }}">{{match_user}} </a>
+
+{{percent}}<br><br>
+
+{%  endfor  %}

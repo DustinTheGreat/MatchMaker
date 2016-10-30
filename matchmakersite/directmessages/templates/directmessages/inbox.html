@@ -1,0 +1,6 @@
+<h6>Total messages: {{request.session.num_of_messages}}</h6><br>
+{% for item in messages_in_inbox %}
+<a href='{% url 'view_direct_message' item.id %}'>View the message</a>
+    <h1>{{item}}</h1><small>from: {{item.sender}}</small>
+<br><br><hr>
+{%  endfor %}

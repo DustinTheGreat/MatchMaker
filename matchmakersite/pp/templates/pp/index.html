@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form method="GET" action="">
+<input type="text" name="q"/>
+<input type="submit" value="search">
+<h2>{{request.user}}</h2>
+</form>
+
+<h1>All Questions</h1>
+
+
+{% for question in queryset %}
+
+<li>{{question.text}}
+<ul>
+{% for answer in question.answer_set.all %}
+	<li>{{answer.text}}</li>
+
+{% endfor %}
+</ul>
+</li>
+{%  endfor %}
+
+</body>
+</html>

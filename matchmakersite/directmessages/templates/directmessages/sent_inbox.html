@@ -1,0 +1,6 @@
+{%  for item in messages_sent %}
+<h1>{{item.title}}</h1><small>To: {{item.reciever}} on: {{item.sent}}</small>
+<p>{{item.text}}</p><br>
+
+
+{% endfor %}

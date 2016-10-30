@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+Question:{{instance.id}}
+<h3>your ideal answer</h3>
+{{user_answer.my_answer}}
+
+<form method="POST" action=""> {% csrf_token %}
+{{form.errors}}
+<h1>{{instance.text}}</h1>
+<input type="hidden" name="question_id" value="{{instance.id}}" />
+{% for answer in instance.answer_set.all %}
+<input type="radio" name="answer_id" value="{{answer.id}}"{% if user_answer.my_answer.id == answer.id %}checked=checked {%endif%}/>  
+
+{{answer.text}}<br>
+
+
+{% endfor %}
+
+Importance:{{form.importance_level}}
+
+
+<h3>thier ideal answer</h3>
+{% for answer in instance.answer_set.all %}
+<input type="radio" name="their_answer_id" value="{{answer.id}}" {% if user_answer.their_answer.id == answer.id %}checked=checked{%endif%}/>{{answer.text}}<br>
+
+{% endfor %}
+<input type="radio" name="their_answer_id" value="-1"/> Doesnt matter <br>
+Importance: {{form.their_importance_level}}
+
+<br>
+<br>
+<input type="submit" value="Save and Continue" />
+
+</form>
+
+
+</body>
+</html>
